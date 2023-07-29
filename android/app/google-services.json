@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "731322602460",
+    "project_id": "train-infire",
+    "storage_bucket": "train-infire.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731322602460:android:81f5fae44d8d650f73b519",
+        "android_client_info": {
+          "package_name": "com.example.firee"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "731322602460-0lma9jp8uh65a0dvgc1n3840iejg812q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.firee",
+            "certificate_hash": "cae0376fcd77d68bae9d85bda11a58fc4240bce4"
+          }
+        },
+        {
+          "client_id": "731322602460-0fipd859k4uk1l718npjepba3963t7af.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgxD8BVJcj_tUPDHALRWqDr9xmw6NbtPQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "731322602460-0fipd859k4uk1l718npjepba3963t7af.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
