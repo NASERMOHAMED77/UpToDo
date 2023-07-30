@@ -1,4 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firee/constant.dart';
+import 'package:firee/core/utils/local_shared_pref.dart';
 import 'package:firee/core/utils/service_locator.dart';
 import 'package:firee/features/home/persentation/manager/post_screen_cubit/post_screen_cubit.dart';
 import 'package:firee/features/login_screen/persentation/manger/login_screen_cubit/login_screen_cubit.dart';
@@ -11,6 +13,9 @@ import 'features/login_screen/data/repo/login_repo_imp.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  await CacheLocal.sharedPrefInt();
+  token = CacheLocal.getDataFromCache(key: 'token');
+  print(token);
   get_locator();
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (context) => LoginCubit(get_it.get<X>())),

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firee/core/utils/local_shared_pref.dart';
 import 'package:firee/features/login_screen/data/repo/login_repo.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -29,7 +30,9 @@ class X implements LoginRepo {
       'email': FirebaseAuth.instance.currentUser!.email.toString(),
       'id': FirebaseAuth.instance.currentUser!.uid.toString()
     });
-
+    CacheLocal.insertDataIntoCache(
+        key: 'token',
+        value: FirebaseAuth.instance.currentUser!.getIdToken().toString());
     FirebaseAuth.instance.signInWithCredential(credential);
   }
 

@@ -1,4 +1,5 @@
 import 'package:firee/constant.dart';
+import 'package:firee/features/home/persentation/view/layout/layout_screen.dart';
 import 'package:firee/features/login_screen/persentation/view/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     BlocProvider.of<LoginCubit>(context).getprofilinfo();
     super.initState();
     Future.delayed(const Duration(seconds: 3), () {
-      Get.to(() => const LoginScreen(), duration: kTranstionDuration);
+      Get.to(() => token==""?const LoginScreen():const LayoutScreen(), duration: kTranstionDuration);
     });
   }
 
