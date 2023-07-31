@@ -18,7 +18,6 @@ class _HomeScreenBodyState extends State<HomeScreenBody> {
   @override
   void initState() {
     super.initState();
-    // TODO: implement initState
     BlocProvider.of<LoginCubit>(context).getprofilinfo();
   }
 

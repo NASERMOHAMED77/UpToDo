@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,7 +15,7 @@ class SendTheardButton extends StatelessWidget {
           onPressed: () async {
             if (BlocProvider.of<PostCubit>(context).imageFile == null &&
                 BlocProvider.of<PostCubit>(context).text == null) {
-              print('no');
+             
             } else {
               if (BlocProvider.of<PostCubit>(context).imageFile != null) {
                 BlocProvider.of<PostCubit>(context).uploadImage();

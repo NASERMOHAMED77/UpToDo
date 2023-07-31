@@ -23,7 +23,7 @@ class _PostTheardBodyState extends State<PostTheardBody> {
             text = textt;
             setState(() {});
           },
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
               hintText: 'Start a theards', border: InputBorder.none),
         ),
         BlocProvider.of<PostCubit>(context).imageFile == null
@@ -31,12 +31,12 @@ class _PostTheardBodyState extends State<PostTheardBody> {
                 onPressed: () {
                   BlocProvider.of<PostCubit>(context).pickImage();
                 },
-                icon: Icon(Icons.attach_file))
+                icon: const Icon(Icons.attach_file))
             : Column(
                 children: [
                   ClipRRect(
                       borderRadius: BorderRadius.circular(20),
-                      child: Container(
+                      child: SizedBox(
                         height: 300,
                         child: Image.file(
                             BlocProvider.of<PostCubit>(context).imageFile!),
@@ -51,7 +51,7 @@ class _PostTheardBodyState extends State<PostTheardBody> {
                       onPressed: () async {
                         BlocProvider.of<PostCubit>(context).pickImage();
                       },
-                      icon: Icon(Icons.attachment_outlined))
+                      icon: const Icon(Icons.attachment_outlined))
                 ],
               ),
       ],

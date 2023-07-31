@@ -21,7 +21,6 @@ class PostCubit extends Cubit<PostState> {
     Reference imageRef =
         FirebaseStorage.instance.ref(basename(imageFile!.path));
     await imageRef.putFile(imageFile!);
-    print(imageRef.getDownloadURL());
     return await imageRef.getDownloadURL();
   }
 
@@ -42,8 +41,8 @@ class PostCubit extends Cubit<PostState> {
         .collection('theards');
     QuerySnapshot x = await theardsref.get();
     List theardsdata = x.docs;
-    theardsdata.forEach((element) {
+    for (var element in theardsdata) {
       theards.add(element);
-    });
+    }
   }
 }

@@ -3,6 +3,7 @@ import 'package:firee/constant.dart';
 import 'package:firee/core/utils/local_shared_pref.dart';
 import 'package:firee/core/utils/service_locator.dart';
 import 'package:firee/features/home/persentation/manager/post_screen_cubit/post_screen_cubit.dart';
+import 'package:firee/features/home/persentation/manager/search_cubit/search_cubit.dart';
 import 'package:firee/features/login_screen/persentation/manger/login_screen_cubit/login_screen_cubit.dart';
 import 'package:firee/features/splash_screen/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,11 @@ void main() async {
   await Firebase.initializeApp();
   await CacheLocal.sharedPrefInt();
   token = CacheLocal.getDataFromCache(key: 'token');
-  print(token);
   get_locator();
   runApp(MultiBlocProvider(providers: [
     BlocProvider(create: (context) => LoginCubit(get_it.get<X>())),
     BlocProvider(create: (context) => PostCubit()),
+    BlocProvider(create: (context) => SearchCubit()),
   ], child: const MyApp()));
 }
 

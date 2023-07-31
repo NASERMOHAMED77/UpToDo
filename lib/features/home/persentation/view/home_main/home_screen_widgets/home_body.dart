@@ -1,3 +1,4 @@
+import 'package:firee/features/home/persentation/view/home_main/home_screen_widgets/reacted_pro.dart';
 import 'package:firee/features/home/persentation/view/home_main/home_screen_widgets/top_bar_post.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,7 +13,8 @@ class HomeBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return RefreshIndicator(
       onRefresh: () async {
-        return await Future.delayed(Duration(microseconds: 600), () async {
+        return await Future.delayed(const Duration(microseconds: 600),
+            () async {
           await BlocProvider.of<PostCubit>(context).getTheards();
         });
       },
@@ -40,7 +42,7 @@ class HomeBody extends StatelessWidget {
                         index: index,
                       ),
                       Positioned(
-                          left: 42,
+                          left: 36,
                           top: 60,
                           bottom: 20,
                           child: Container(
@@ -51,37 +53,7 @@ class HomeBody extends StatelessWidget {
                               color: Colors.grey.shade300,
                             ),
                           )),
-                      Positioned(
-                          left: 40,
-                          bottom: 8,
-                          child: Container(
-                            height: 35,
-                            width: 35,
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  right: 0,
-                                  child: CircleAvatar(
-                                    radius: 9,
-                                  ),
-                                ),
-                                Positioned(
-                                  left: 0,
-                                  top: 10,
-                                  child: CircleAvatar(
-                                    radius: 7,
-                                  ),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                  right: 8,
-                                  child: CircleAvatar(
-                                    radius: 6,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ))
+                      const ReactedProfiles()
                     ],
                   );
                 }),
@@ -91,56 +63,3 @@ class HomeBody extends StatelessWidget {
     );
   }
 }
-//  ListTile(
-//               leading: CircleAvatar(
-//                 backgroundImage:
-//                     AssetImage('images/${threadlist.profileImage}'),
-//               ),
-//               title: Row(
-//                 children: [
-//                   Text(
-//                     threadlist.name ?? 'name',
-//                     style: TextStyle(
-//                       fontSize: 16,
-//                       fontWeight: FontWeight.bold,
-//                     ),
-//                   ),
-//                   Spacer(),
-//                   Text(
-//                     threadlist.posted!,
-//                     style: TextStyle(
-//                       fontSize: 14,
-//                       color: Colors.grey.shade500,
-//                     ),
-//                   ),
-//                   SizedBox(width: 10),
-//                   Icon(Icons.more_horiz)
-//                 ],
-//               ),
-//               subtitle: Text(
-//                 threadlist.description!,
-//                 style: TextStyle(
-//                   fontSize: 16,
-//                   color: Colors.black,
-//                   fontWeight: FontWeight.w500,
-//                 ),
-//               ),
-//             ),
-//             if (threadlist.image != '')
-//               Padding(
-//                 padding: const EdgeInsets.only(
-//                   right: 20,
-//                   left: 70,
-//                 ),
-//                 child: Container(
-//                   height: 300,
-//                   width: double.infinity,
-//                   decoration: BoxDecoration(
-//                       borderRadius: BorderRadius.circular(10),
-//                       color: Colors.amber,
-//                       image: DecorationImage(
-//                         image: AssetImage('images/${threadlist.image}'),
-//                         fit: BoxFit.cover,
-//                       )),
-//                 ),
-//               ),

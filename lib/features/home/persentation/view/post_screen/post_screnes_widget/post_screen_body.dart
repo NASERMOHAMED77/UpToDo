@@ -43,16 +43,16 @@ class PostScreenBody extends StatelessWidget {
                 ),
               ),
               title: Padding(
-                padding: EdgeInsets.only(left: 0, top: 20),
+                padding: const EdgeInsets.only(left: 0, top: 20),
                 child: Text(
                   BlocProvider.of<LoginCubit>(context).xa[0]['name'].toString(),
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
                 ),
               ),
-              subtitle: PostTheardBody(),
+              subtitle: const PostTheardBody(),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 10),
+            const Padding(
+              padding: EdgeInsets.only(left: 10),
               child: Row(
                 children: [PostTheardBottomBar(), SendTheardButton()],
               ),

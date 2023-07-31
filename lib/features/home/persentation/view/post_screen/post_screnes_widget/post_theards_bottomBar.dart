@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,7 +33,7 @@ class PostTheardBottomBar extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             width: 20,
           ),
           Text(

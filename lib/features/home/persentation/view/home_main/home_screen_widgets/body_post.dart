@@ -1,4 +1,4 @@
-// ignore_for_file: must_be_immutable
+// ignore_for_file: must_be_immutable, prefer_const_constructors, deprecated_member_use
 
 import 'package:firee/features/home/persentation/manager/post_screen_cubit/post_screen_cubit.dart';
 import 'package:flutter/material.dart';
@@ -15,10 +15,8 @@ class PostBody extends StatelessWidget {
       children: [
         SizedBox(
             child: Text(
-          BlocProvider.of<PostCubit>(context).theards[index]['text'] == null
-              ? ''
-              : BlocProvider.of<PostCubit>(context).theards[index]['text'],
-          style: TextStyle(
+          BlocProvider.of<PostCubit>(context).theards[index]['text'] ?? '',
+          style: const TextStyle(
               fontWeight: FontWeight.w400,
               fontSize: 15,
               overflow: TextOverflow.ellipsis,
