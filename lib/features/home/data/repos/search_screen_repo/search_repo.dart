@@ -1,5 +1,5 @@
 
 abstract class SearchRepo {
-   Future<List>   getUser();
+   Future<List>   getUsers();
   
 }

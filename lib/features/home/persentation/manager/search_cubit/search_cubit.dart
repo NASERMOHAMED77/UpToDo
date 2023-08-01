@@ -5,19 +5,17 @@ import 'package:firee/features/home/persentation/manager/search_cubit/search_sta
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchCubit extends Cubit<GetUserState> {
-  SearchCubit() : super(GetUserLoading());
+  SearchCubit(this.searchRepo) : super(GetUserLoading());
   List users = [];
+  SearchRepo searchRepo;
+
   getUser() async {
     try {
       emit(GetUserLoading());
-      List users = [];
 
-      SearchRepo? searchRepo;
+      users = await searchRepo.getUsers();
 
-      List userData = await searchRepo!.getUser();
-      for (var element in userData) {
-        users.add(element);
-      }
+      emit(GetUserSuccess());
     } catch (e) {
       emit(GetUserFailure(massages: e.toString()));
     }

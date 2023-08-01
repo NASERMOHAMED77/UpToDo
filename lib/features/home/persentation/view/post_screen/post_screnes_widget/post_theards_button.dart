@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../login_screen/persentation/manger/login_screen_cubit/login_screen_cubit.dart';
 import '../../../manager/post_screen_cubit/post_screen_cubit.dart';
 
 class SendTheardButton extends StatelessWidget {
@@ -15,22 +16,25 @@ class SendTheardButton extends StatelessWidget {
           onPressed: () async {
             if (BlocProvider.of<PostCubit>(context).imageFile == null &&
                 BlocProvider.of<PostCubit>(context).text == null) {
-             
             } else {
               if (BlocProvider.of<PostCubit>(context).imageFile != null) {
-                BlocProvider.of<PostCubit>(context).uploadImage();
                 String url =
                     await BlocProvider.of<PostCubit>(context).uploadImage();
                 await BlocProvider.of<PostCubit>(context).uploadTheard(
-                    text: BlocProvider.of<PostCubit>(context).text, url: url);
+                    url: url,
+                    senderName: BlocProvider.of<LoginCubit>(context).xa[0]
+                        ['name'],
+                    senderimage: BlocProvider.of<LoginCubit>(context).xa[0]
+                        ['image']);
 
                 BlocProvider.of<PostCubit>(context).imageFile = null;
                 BlocProvider.of<PostCubit>(context).text = null;
               } else {
                 await BlocProvider.of<PostCubit>(context).uploadTheard(
-                  text: BlocProvider.of<PostCubit>(context).text,
-                );
-
+                    senderName: BlocProvider.of<LoginCubit>(context).xa[0]
+                        ['name'],
+                    senderimage: BlocProvider.of<LoginCubit>(context).xa[0]
+                        ['image']);
                 //  BlocProvider.of<PostCubit>(context).getTheards();
               }
             }

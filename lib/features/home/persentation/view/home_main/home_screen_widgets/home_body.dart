@@ -47,7 +47,7 @@ class HomeBody extends StatelessWidget {
                           bottom: 20,
                           child: Container(
                             height: 1000,
-                            width: 3,
+                            width: 2,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(1),
                               color: Colors.grey.shade300,

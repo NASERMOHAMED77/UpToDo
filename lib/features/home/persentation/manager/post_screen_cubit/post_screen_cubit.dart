@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls
+
 import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -24,25 +26,27 @@ class PostCubit extends Cubit<PostState> {
     return await imageRef.getDownloadURL();
   }
 
-  uploadTheard({String? text, String? url}) {
-    CollectionReference theards = FirebaseFirestore.instance
-        .collection('users')
-        .doc('1')
-        .collection('theards');
-    theards.add({'text': text, 'image': url});
+  uploadTheard({String? url, String? senderimage, String? senderName}) {
+    CollectionReference theards =
+        FirebaseFirestore.instance.collection('theards');
+    theards.add({
+      'text': text,
+      'image': url,
+      'senderimage': senderimage,
+      'sendername': senderName
+    });
   }
 
   List theards = [];
   getTheards() async {
-    theards = [];
-    CollectionReference theardsref = FirebaseFirestore.instance
-        .collection('users')
-        .doc('1')
-        .collection('theards');
-    QuerySnapshot x = await theardsref.get();
-    List theardsdata = x.docs;
-    for (var element in theardsdata) {
-      theards.add(element);
-    }
+    FirebaseFirestore.instance
+        .collection('theards')
+        .snapshots()
+        .listen((event) {
+      theards = [];
+      event.docs.forEach((element) {
+        theards.add(element);
+      });
+    });
   }
 }

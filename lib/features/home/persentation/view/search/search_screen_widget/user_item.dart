@@ -1,8 +1,8 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'package:firee/features/home/persentation/manager/search_cubit/search_cubit.dart';
 import 'package:firee/features/home/persentation/manager/search_cubit/search_state.dart';
-import 'package:firee/features/home/persentation/view/layout/layout_screen.dart';
+import 'package:firee/features/home/persentation/view/search/search_screen_widget/follow_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,15 +17,15 @@ class UserItem extends StatelessWidget {
           return Expanded(
             child: ListView.builder(
                 physics: const BouncingScrollPhysics(),
-                itemCount: 10,
-                itemBuilder: (context, Index) {
+                itemCount: BlocProvider.of<SearchCubit>(context).users.length,
+                itemBuilder: (context, index) {
                   return Column(
                     children: [
                       SizedBox(
-                        height: MediaQuery.of(context).size.height * .11,
+                        height: MediaQuery.of(context).size.height * .12,
                         width: double.infinity,
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Padding(
@@ -41,48 +41,40 @@ class UserItem extends StatelessWidget {
                             Padding(
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 18),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    BlocProvider.of<SearchCubit>(context)
-                                        .users[index]['email']
-                                        .toString(),
-                                    style: const TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.w600),
-                                  ),
-                                  Text(
-                                    BlocProvider.of<SearchCubit>(context)
-                                        .users[index]['name'],
-                                    style: const TextStyle(
-                                        fontSize: 15, color: Colors.grey),
-                                  ),
-                                  const SizedBox(
-                                    height: 20,
-                                  ),
-                                  const Text(
-                                    '12 Followers',
-                                    style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
+                              child: SizedBox(
+                                width: MediaQuery.of(context).size.width * .5,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      '_${BlocProvider.of<SearchCubit>(context).users[index]['email'].toString().split('@')[0]}',
+                                      style: const TextStyle(
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                      BlocProvider.of<SearchCubit>(context)
+                                          .users[index]['name'],
+                                      style: const TextStyle(
+                                          fontSize: 15, color: Colors.grey),
+                                    ),
+                                    const SizedBox(
+                                      height: 20,
+                                    ),
+                                    const Text(
+                                      '12 Followers',
+                                      style: TextStyle(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
-                            FilledButton(
-                                style: const ButtonStyle(
-                                    overlayColor:
-                                        MaterialStatePropertyAll(Colors.grey),
-                                    side: MaterialStatePropertyAll(
-                                        BorderSide(color: Colors.black)),
-                                    backgroundColor:
-                                        MaterialStatePropertyAll(Colors.white)),
-                                onPressed: () {},
-                                child: const Text(
-                                  'Follow',
-                                  style: TextStyle(color: Colors.black),
-                                )),
+                            const FollowButton(),
                           ],
                         ),
                       ),

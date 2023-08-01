@@ -21,6 +21,7 @@ class _PostTheardBodyState extends State<PostTheardBody> {
           maxLines: null,
           onChanged: (textt) {
             text = textt;
+            BlocProvider.of<PostCubit>(context).text = textt;
             setState(() {});
           },
           decoration: const InputDecoration(
@@ -40,13 +41,7 @@ class _PostTheardBodyState extends State<PostTheardBody> {
                         height: 300,
                         child: Image.file(
                             BlocProvider.of<PostCubit>(context).imageFile!),
-                      ))
-                  // CircleAvatar(
-                  //   radius: 35,
-                  //   backgroundImage: FileImage(
-                  //       BlocProvider.of<PostCubit>(context).imageFile!),
-                  // ),,
-                  ,
+                      )),
                   IconButton(
                       onPressed: () async {
                         BlocProvider.of<PostCubit>(context).pickImage();

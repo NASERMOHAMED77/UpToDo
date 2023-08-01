@@ -18,12 +18,11 @@ class X implements LoginRepo {
       accessToken: googleAuth?.accessToken,
       idToken: googleAuth?.idToken,
     );
+    await FirebaseAuth.instance.signInWithCredential(credential);
     var newUser = FirebaseFirestore.instance
         .collection('users')
-        .doc(FirebaseAuth.instance.currentUser!.uid.toString());
+        .doc(FirebaseAuth.instance.currentUser!.email.toString());
 
-    newUser.collection("theards").add({"sdewde": ''});
-    newUser.collection("friends").add({"wdwdqw": ''});
     newUser.set({
       'image': FirebaseAuth.instance.currentUser!.photoURL.toString(),
       'name': FirebaseAuth.instance.currentUser!.displayName.toString(),
@@ -31,8 +30,7 @@ class X implements LoginRepo {
       'id': FirebaseAuth.instance.currentUser!.uid.toString()
     });
     CacheLocal.insertDataIntoCache(
-        key: 'token',
-        value: FirebaseAuth.instance.currentUser!.getIdToken().toString());
+        key: 'token', value: FirebaseAuth.instance.currentUser!.email.toString());
     FirebaseAuth.instance.signInWithCredential(credential);
   }
 

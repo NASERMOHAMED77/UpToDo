@@ -30,34 +30,39 @@ class PostScreenBody extends StatelessWidget {
                 fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              leading: Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: CircleAvatar(
-                  radius: 20,
-                  backgroundImage: NetworkImage(
-                      BlocProvider.of<LoginCubit>(context).xa[0]['image']),
+        body: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              ListTile(
+                leading: Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
+                  child: CircleAvatar(
+                    radius: 20,
+                    backgroundImage: NetworkImage(
+                        BlocProvider.of<LoginCubit>(context).xa[0]['image']),
+                  ),
+                ),
+                title: Padding(
+                  padding: const EdgeInsets.only(left: 0, top: 20),
+                  child: Text(
+                    BlocProvider.of<LoginCubit>(context)
+                        .xa[0]['name']
+                        .toString(),
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 17),
+                  ),
+                ),
+                subtitle: const PostTheardBody(),
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 10),
+                child: Row(
+                  children: [PostTheardBottomBar(), SendTheardButton()],
                 ),
               ),
-              title: Padding(
-                padding: const EdgeInsets.only(left: 0, top: 20),
-                child: Text(
-                  BlocProvider.of<LoginCubit>(context).xa[0]['name'].toString(),
-                  style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                ),
-              ),
-              subtitle: const PostTheardBody(),
-            ),
-            const Padding(
-              padding: EdgeInsets.only(left: 10),
-              child: Row(
-                children: [PostTheardBottomBar(), SendTheardButton()],
-              ),
-            ),
-          ],
+            ],
+          ),
         ));
   }
 }

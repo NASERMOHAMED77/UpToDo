@@ -21,16 +21,18 @@ class PostBody extends StatelessWidget {
               fontSize: 15,
               overflow: TextOverflow.ellipsis,
               color: Colors.black),
-          maxLines: 5,
+          maxLines: 1,
         )),
         SizedBox(
           height: 10,
         ),
         BlocProvider.of<PostCubit>(context).theards[index]['image'] == null
-            ? Container()
+            ? Container(
+                height: 0,
+              )
             : ClipRRect(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 30),
+                  padding: const EdgeInsets.only(right: 0),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(15),
                     child: Image.network(BlocProvider.of<PostCubit>(context)
@@ -63,7 +65,8 @@ class PostBody extends StatelessWidget {
           '    20 replies  .  295 likes',
           style: TextStyle(
               color: Colors.grey.shade600, fontWeight: FontWeight.w500),
-        )
+        ),
+        Divider()
       ],
     );
   }
