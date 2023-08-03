@@ -2,7 +2,6 @@ import 'package:firee/features/home/persentation/manager/post_screen_cubit/post_
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-
 class ActivityScreenBody extends StatelessWidget {
   const ActivityScreenBody({
     super.key,
@@ -16,14 +15,9 @@ class ActivityScreenBody extends StatelessWidget {
       children: [
         const Center(
           child: Text(
-            'Activity',
+            'No one Follows you',
           ),
         ),
-        ElevatedButton(
-            onPressed: () {
-              BlocProvider.of<PostCubit>(context).getTheards();
-            },
-            child: const Text('pressed'))
       ],
     );
   }
